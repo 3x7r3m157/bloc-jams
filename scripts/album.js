@@ -28,6 +28,19 @@ var albumMarconi = {
     ]
 };
 
+var albumSlayer = {
+    title: 'Reign in Blood',
+    artist: 'Slayer',
+    label: 'DefJam',
+    year: '1986',
+    albumArtUrl: 'assets/images/album_covers/20.png',
+    songs: [
+        { title: 'Angel of Death', duration: '4:51' },
+        { title: 'Piece by Piece', duration: '2:02' },
+        { title: 'Necrophobic', duration: '1:40'},
+    ]
+};
+
 var createSongRow = function(songNumber, songName, songLength) {
     var template =
     '<tr class="album-view-song-item">'
@@ -40,15 +53,15 @@ var createSongRow = function(songNumber, songName, songLength) {
 return template;
 };
 
-var setCurrentAlbum = function(album) {
-    // #1
-    var albumTitle = document.getElementsByClassName('album-view-title')[0];
-    var albumArtist = document.getElementsByClassName('album-view-artist')[0];
-    var albumReleaseInfo = document.getElementsByClassName('album-view-release-info')[0];
-    var albumImage = document.getElementsByClassName('album-cover-art')[0];
-    var albumSongList = document.getElementsByClassName('album-view-song-list')[0];
+// These variables are moved outside of setCurrentAlbum because we need global access of albumImage
+var albumTitle = document.getElementsByClassName('album-view-title')[0];
+var albumArtist = document.getElementsByClassName('album-view-artist')[0];
+var albumReleaseInfo = document.getElementsByClassName('album-view-release-info')[0];
+var albumImage = document.getElementsByClassName('album-cover-art')[0];
+var albumSongList = document.getElementsByClassName('album-view-song-list')[0];
 
-    // #2
+var setCurrentAlbum = function(album) {
+
     albumTitle.firstChild.nodeValue = album.title;
     albumArtist.firstChild.nodeValue = album.artist;
     albumReleaseInfo.firstChild.nodeValue = album.year + ' ' + album.label;
@@ -65,4 +78,6 @@ var setCurrentAlbum = function(album) {
 
 window.onload = function() {
     setCurrentAlbum(albumPicasso);
+
+    var albums = [albumPicasso]
 };
