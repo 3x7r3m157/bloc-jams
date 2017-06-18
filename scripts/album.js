@@ -92,7 +92,7 @@ window.onload = function() {
             var songItemNumber = songItem.getAttribute('data-song-number');
 
             if (songItemNumber !== currentlyPlayingSong) {
-                songItem.innerHTML = songItemNumber;
+                songItem.innerHTML = songItemNumber
             }
         });
 
@@ -107,6 +107,16 @@ window.onload = function() {
             var currentParent = element.parentElement;
             while (currentParent.className !== targetClass && currentParent.className !== null) {
                 currentParent = currentParent.parentElement;
+            }
+            
+            return currentParent;
+
+            if (targetClass && currentParent == null) {
+                console.log('parent not found')
+
+                if (targetClass !== currentParent.className) {
+                    console.log('No parent found with that class name')
+                }
             }
         }
     };
