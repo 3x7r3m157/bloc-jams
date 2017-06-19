@@ -92,7 +92,7 @@ window.onload = function() {
             var songItemNumber = songItem.getAttribute('data-song-number');
 
             if (songItemNumber !== currentlyPlayingSong) {
-                songItem.innerHTML = songItemNumber;
+                songItem.innerHTML = songItemNumber
             }
         });
 
@@ -108,6 +108,8 @@ window.onload = function() {
             while (currentParent.className !== targetClass && currentParent.className !== null) {
                 currentParent = currentParent.parentElement;
             }
+
+            return currentParent;
         }
     };
 
