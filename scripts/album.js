@@ -15,6 +15,22 @@ var setSong = function(songNumber) {
 
 };
 
+var setCurrentTimeInPlayerBar = function() {
+    var mySound = currentSoundFile,
+    timer = buzz.toTimer(mySound.getTime());
+
+    $('.seek-control .current-time').html(timer);
+
+}
+
+var setTotalTimeInPlayerBar = function() {
+    var mySound = currentSoundFile,
+    timer = buzz.toTimer(mySound.getDuration());
+
+    $('.seek-control .total-time').html(timer);
+
+}
+
 var seek = function(time) {
     if (currentSoundFile) {
         currentSoundFile.setTime(time);
@@ -136,7 +152,10 @@ var updateSeekBarWhileSongPlays = function() {
             var seekBarFillRatio = this.getTime() / this.getDuration();
             var $seekBar = $('.seek-control .seek-bar');
 
+
             updateSeekPercentage($seekBar, seekBarFillRatio);
+            setCurrentTimeInPlayerBar();
+            setTotalTimeInPlayerBar();
         });
     }
 };
